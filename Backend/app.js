@@ -1,4 +1,3 @@
-
 import cors from "cors";
 import { errorHandler, notFound } from "./Middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
@@ -6,6 +5,8 @@ const express = require('express');
 const app = express();
 const authRoutes = require('./routes/authRoutes.js');
 const productRoutes = require('./routes/product.route.js');
+import bannerRoute from "./routes/banner.route.js";
+import userRoute from "./routes/user.route.js";
 
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
@@ -23,6 +24,8 @@ app.use(cookieParser());
 // routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/banners", bannerRoute);
+app.use("/api/v1/users", bannerRoute);
 
 //Cors
 app.use(cors());
