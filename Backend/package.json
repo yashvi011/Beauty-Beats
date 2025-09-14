@@ -1,19 +1,23 @@
 {
-  "name": "backend",
+  "name": "beautybeats",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0",
+    "dotenv": "^17.2.2",
+    "express": "^4.21.2",
     "express-async-handler": "^1.2.0",
-    "mongoose": "^8.17.2"
-  }
+    "mongoose": "^8.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
