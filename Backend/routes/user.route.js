@@ -3,7 +3,7 @@ const router = express.Router();
 import{getAllUser, getUser, deleteUser, updateUser} from "../controller/auth.controller.js"
 
 //GET ALL USERS ROUTE
-router.get("/",getAllUsers);
+router.get("/",getAllUser);
 
 //DELETE USER ROUTE
 router.delete("/:id",deleteUser);
