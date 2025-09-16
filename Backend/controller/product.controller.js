@@ -75,6 +75,7 @@ const getALLproducts = asyncHandler(async (req, res) => {
         });
     } else {
         products = await Product.find().sort({ createdAd: -1 });
+        res.status(200).json(products);
     }
 });
 

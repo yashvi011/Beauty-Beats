@@ -1,5 +1,5 @@
 import cors from "cors";
-import errorHandling from "./middleware/error.middleware.js";
+import errorHandler from './middleware/error.middleware.js';
 import cookieParser from "cookie-parser";
 import express from 'express';
 const app = express();
@@ -13,6 +13,9 @@ import connectDB from "./util/db.js";
 dotenv.config();
 connectDB();
 
+//Cors
+app.use(cors());  
+
 app.use("/api/banners", bannerRoutes);
 app.get("/", (req, res) => {
   res.send("Backend server is running");
@@ -20,8 +23,7 @@ app.get("/", (req, res) => {
 
 //json body
 app.use(express.json());
-//Cors
-app.use(cors());
+
 
 // Import routes
 // adjust path if inside a folder
@@ -57,7 +59,7 @@ app.listen(PORT, () => {
 
 //Error middleware
 app.use(notFound);
-app.use(errorHandling);
+app.use(errorHandler);
 
 
 export default app;

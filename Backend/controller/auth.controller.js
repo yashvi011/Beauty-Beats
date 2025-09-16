@@ -1,6 +1,9 @@
 import user from "../models/user.model.js";
 import asyncHandler from 'express-async-handler';
 import generateToken from "../util/generateToken.js";
+import bcrypt from 'bcryptjs';
+import pkg from 'statuses';
+const { message } = pkg;
 
 //REGISTER USER
 //route POST /api/v1/register
@@ -36,19 +39,9 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
-  // Check if user and password are provided
-  if (!email || !password) {
-    res.status(400);
-    throw new Error("Please add all fields");
-  }
-
-  // Find user in the database
   const user = await User.findOne({ email });
 
-  // Check if user exists and password matches
-  if (user && (await user.matchPassword(password))) {
-    // Generate and send token if login is successful
+  if (user && await (user.matchpassword(password))) {
     generateToken(res, user._id);
     res.status(200).json({
       _id: user._id,
@@ -56,7 +49,6 @@ const loginUser = asyncHandler(async (req, res) => {
       email: user.email,
     });
   } else {
-    // Correctly send an error response to the client
     res.status(401);
     throw new Error("Invalid email or password");
   }
@@ -66,7 +58,11 @@ const loginUser = asyncHandler(async (req, res) => {
 //@access public
 
 const logOut = asyncHandler(async (req, res) => {
-  res.cookie("jwt", "", {})
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0)
+  });
+  res.status(200).json({ message: "Logout successfully" });
 });
 
-module.exports = { registerUser, loginUser, logoutUser };
+export {logOut, loginUser, registerUser};

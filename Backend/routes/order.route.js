@@ -7,7 +7,7 @@ router.post("/",createOrder);
 //UPADTE ORDER ROUTE
 router.put("/:id",updateOrder);
 //GET ALL ORDERS ROUTE
-router.get("/",getAllOrder);
+router.get("/",protect,getAllOrder);
 //DELETE ORDER ROUTE
 router.delete("/:id",deleteOrder);
 //GET USER'S ORDER ROUTE
