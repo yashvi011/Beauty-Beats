@@ -1,20 +1,12 @@
 import mongoose from "mongoose";
 
-const BannerSchema = new mongoose.Schema(
+const BannerSchema = mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
-    subtitle: {
-      type: String,
-      required: true,
-    },
-    img: {
-      type: String,
-      required: true,
-    },
+    title: { type: String, required: true },
+    subtitle: { type: String, required: true },
+    img: { type: String, required: true },
   },
+
   { timestamps: true }
 );
 

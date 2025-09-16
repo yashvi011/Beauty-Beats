@@ -1,19 +1,31 @@
-import { ratingProduct, getALLproducts, getProduct, createProduct, upadteProduct, deleteProduct } from "../controller/product.controller.js";
-import express from 'express';
+import express from "express";
+import {
+  createProduct,
+  getAllProducts,
+  getProduct,
+  updateProduct,
+  ratingProduct,
+  deleteProduct,
+} from "../controllers/product.controllers.js";
+import {protect} from "../middlewares/auth.middleware.js"
 const router = express.Router();
 
-//RATING PRODUCT ROUTE
-router.put("/rating/:productId", ratingProduct);
-//GET ALL PRODUCTS
-router.get("/", getALLproducts);
-//GET ONE PRODUCT
-router.get("/find/:id", getProduct);
-//CREATE PRODUCT
+//CREATE PRODUCT ROUTE
 router.post("/", createProduct);
-//UPADTE PRODUCT
-router.put("/:id", upadteProduct);
 
-//DELETE PRODUCT
+//GET ALL PRODUCTS ROUTE
+router.get("/", getAllProducts);
+
+//GET ONE PRODUCT ROUTE
+router.get("/find/:id", getProduct);
+
+//UPDATE PRODUCT ROUTE
+router.put("/:id", updateProduct);
+
+// RATING PRODUCT ROUTE
+router.put("/ratings/:productId", ratingProduct);
+
+//DELETE PRODUCT ROUTE
 router.delete("/:id", deleteProduct);
 
 export default router;

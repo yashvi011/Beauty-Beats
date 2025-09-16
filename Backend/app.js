@@ -1,66 +1,37 @@
-import cors from "cors";
-import errorHandler from './middleware/error.middleware.js';
+import express from "express";
 import cookieParser from "cookie-parser";
-import express from 'express';
-const app = express();
-import authRoutes from './routes/auth.route.js';
-import productRoutes from './routes/product.route.js';
-import bannerRoutes from './routes/banner.route.js';
-import userRoute from "./routes/user.route.js";
+import authRoute from "./routes/auth.route.js";
+import productRoute from "./routes/product.route.js";
 import orderRoute from "./routes/order.route.js";
-import dotenv from "dotenv";
-import connectDB from "./util/db.js";
-dotenv.config();
-connectDB();
+import userRoute from "./routes/user.route.js";
+import cartRoute from "./routes/cart.route.js";
+import stripeRoute from "./routes/stripe.js";
+import bannerRoute from "./routes/banner.route.js";
+import cors from "cors";
+import {notFound, errorHandler } from "./middlewares/error.middleware.js";
 
-//Cors
-app.use(cors());  
-
-app.use("/api/banners", bannerRoutes);
-app.get("/", (req, res) => {
-  res.send("Backend server is running");
-});
-
-//json body
-app.use(express.json());
-
-
-// Import routes
-// adjust path if inside a folder
-
-//cookie-parser
-app.use(cookieParser());
-    
-// routes
-app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/products', productRoutes);
-app.use('/api/v1/banners', bannerRoutes);
-app.use('/api/v1/users', userRoute);
-app.use('/api/v1/orders', orderRoute);
-
-
-
-// Fallback for 404 errors
-app.use((req, res, next) => {
-  res.status(404).json({ message: "Not Found" });
-});
-// Test route
-app.get("/", (req, res) => {
-  res.send("Backend server is running!");
-});
-
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
-
-
-
-//Error middleware
-app.use(notFound);
-app.use(errorHandler);
-
-
+const app = express();
 export default app;
 
+// CORS MIDDLEWARE
+app.use(cors());
+
+// JSON MIDDLEWARE
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// COOKIE PARSER MIDDLEWARE
+app.use(cookieParser());
+
+// ROUTES
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/products", productRoute);
+app.use("/api/v1/orders", orderRoute);
+app.use("/api/v1/users", userRoute);
+app.use("/api/v1/carts", cartRoute);
+app.use("/api/v1/stripe", stripeRoute);
+app.use("/api/v1/banners", bannerRoute);
+
+// ERROR MIDDLEWARES
+app.use(notFound);
+app.use(errorHandler);

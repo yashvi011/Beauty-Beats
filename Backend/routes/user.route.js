@@ -1,18 +1,26 @@
 import express from "express";
+import {
+  updateUser,
+  getAllUsers,
+  getOneUser,
+  getUsersStats,
+  deleteUser,
+} from "../controllers/user.controller.js";
 const router = express.Router();
-import { getAllUser, getUser, deleteUser, updateUser } from "../controller/user.controller.js";
 
+// UPDATE USER ROUTE
+router.post("/", updateUser);
 
-//GET ALL USERS ROUTE
-router.get("/",getAllUser);
+// GET ALL USERS ROUTE
+router.get("/", getAllUsers);
 
-//DELETE USER ROUTE
-router.delete("/:id",deleteUser);
+// GET ONE USER ROUTE
+router.put("/find/:id", getOneUser);
 
-//UPDATE USER ROUTE
-router.put("/:id",updateUser);
+// GET USER STATISTICS ROUTE
+router.get("/stats", getUsersStats);
 
-//GET ONE USER ROUTE
-router.get("/find/:userId",getUser);
+// DELETE USER ROUTE
+router.delete("/:id", deleteUser);
 
 export default router;
