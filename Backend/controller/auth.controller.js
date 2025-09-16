@@ -1,25 +1,26 @@
-import user from "../models/user.model.js";
-import asyncHandler from 'express-async-handler';
-import generateToken from "../util/generateToken.js";
-import bcrypt from 'bcryptjs';
-import pkg from 'statuses';
-const { message } = pkg;
+import User from "../models/user.model.js";
+import asyncHandler from "express-async-handler";
+import generateToken from "../utils/generateToken.js";
 
-//REGISTER USER
-//route POST /api/v1/register
-//@access public
+
+// REGISTER USER
+// route POST /api/v1/auth/register
+//@access Public
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
   const userExists = await User.findOne({ email });
   if (userExists) {
-    res.status(4000);
+    res.status(400);
     throw new Error("User already exists");
-
   }
+
   const user = await User.create({
-    name, email, password
+    name,
+    email,
+    password,
   });
+
   if (user) {
     generateToken(res, user._id);
     res.status(201).json({
@@ -33,17 +34,16 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-//LOGIN USER
+// LOGIN USER
 // route POST /api/v1/auth/login
-//@access public 
+//@access Public
 
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-
-  if (user && await (user.matchpassword(password))) {
+  if (user && await(user.matchPassword(password))) {
     generateToken(res, user._id);
-    res.status(200).json({
+    res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
@@ -53,16 +53,18 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid email or password");
   }
 });
-//LOGOUT USER 
+
+// @desc Logout user
 // route POST /api/v1/auth/logout
-//@access public
+//@access Public
 
 const logOut = asyncHandler(async (req, res) => {
+  console.log('logout')
   res.cookie("jwt", "", {
     httpOnly: true,
-    expires: new Date(0)
+    expires: new Date(0),
   });
-  res.status(200).json({ message: "Logout successfully" });
+  res.status(200).json({message:'Logout out successfully'});
 });
 
-export {logOut, loginUser, registerUser};
+export { registerUser, loginUser, logOut };

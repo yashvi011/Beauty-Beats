@@ -3,16 +3,16 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const generateToken = (res, userId) => {
-const token = jwt.sign({userId}, process.env.JWT_SEC, {
-   expiresIn: "10d"
-});
+  const token = jwt.sign({ userId }, process.env.JWT_SEC, {
+    expiresIn: "30d",
+  });
 
-res.cookie('jwt', token, {
+  res.cookie('jwt', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development',
-    samesite: 'strict',
+    sameSite: 'strict',
     maxAge: 30 * 24 * 60 * 60 * 1000
-});
-}
+  })
+};
 
 export default generateToken;

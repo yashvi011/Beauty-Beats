@@ -1,18 +1,15 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-dotenv.config();
 
-const dbconnection = async() =>{
-    const DB = process.env.DB;
-    
-try{
-    await mongoose.connect(DB).then( () => {
-        console.log("Database is connected successfully");
-    })
-}catch (error) {
+const dbConnection = async () => {
+  try {
+    await mongoose.connect(process.env.DB).then(() => {
+      console.log("Database is running successfully");
+    });
+  } catch (error) {
     console.log(error);
-    setTimeout(dbconnection, 5000)
-}
-}
+    setTimeout(5000, dbConnection);
+  }
+};
 
-export default dbconnection;
+export { dbConnection };
