@@ -58,3 +58,5 @@ const loginuser = asyncHandler(async (req, res) => {
 const logOut = asyncHandler(async(req,res) =>{
     res.cookie("jwt", "" ,{})
 });
+
+module.exports = { registerUser,  loginuser,  logoutUser};

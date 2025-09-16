@@ -1,22 +1,22 @@
 import mongoose from "mongoose";
-const BannnerSchema = mongoose.schema({
+
+const BannerSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        require: true
+      type: String,
+      required: true,
     },
     subtitle: {
-        type: String,
-        require: true
+      type: String,
+      required: true,
     },
     img: {
-        type: String,
-        require: true
-    }
-},
-    {
-        timestamps: true,
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-    })
-
-const Banner = mongoose.model("Banner", BannnerSchema);
+const Banner = mongoose.model("Banner", BannerSchema);
 export default Banner;
