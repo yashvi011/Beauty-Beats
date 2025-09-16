@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.route.js';
 import productRoutes from './routes/product.route.js';
 import bannerRoutes from './routes/banner.route.js';
 import userRoute from "./routes/user.route.js";
+import orderRoute from "./routes/order.route.js";
 import dotenv from "dotenv";
 import connectDB from "./util/db.js";
 dotenv.config();
@@ -32,7 +33,8 @@ app.use(cookieParser());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/banners', bannerRoutes);
-app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/users', userRoute);
+app.use('/api/v1/orders', orderRoute);
 
 
 
@@ -55,7 +57,7 @@ app.listen(PORT, () => {
 
 //Error middleware
 app.use(notFound);
-app.use(errorHandler);
+app.use(errorHandling);
 
 
 export default app;

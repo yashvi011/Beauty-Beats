@@ -13,12 +13,14 @@ dotenv.config();
 
 // Middleware
 app.use(express.json());
+app.use(mongoose);
 
 // Import routes
 // if authRoutes.js is in same folder as server.js
-app.use("/api/user",userRoutes);
-app.use("/api/banners", bannerRoutes);
-app.use("/api/auth", authRoutes);
+app.use("/api/v1/user",userRoutes);
+app.use("/api/v1/banners", bannerRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/product",productRoutes);
 
 // Test route
 app.get("/", (req, res) => {
