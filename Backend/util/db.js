@@ -8,7 +8,7 @@ const dbConnection = async () => {
     });
   } catch (error) {
     console.log(error);
-    setTimeout(5000, dbConnection);
+    setTimeout(8000, dbConnection);
   }
 };
 

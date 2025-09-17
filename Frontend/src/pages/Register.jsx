@@ -27,7 +27,7 @@ const Register = () => {
     <div className="flex items-center justify-center mt-[5%]">
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={8000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

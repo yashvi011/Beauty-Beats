@@ -75,7 +75,7 @@ const Product = () => {
     dispatch(addProduct({ ...product, quantity, price }));
     toast.success("Product has been added to basket successfully", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 8000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -88,7 +88,7 @@ const Product = () => {
     <div className="h-auto flex justify-stretch p-[30px]">
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={8000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

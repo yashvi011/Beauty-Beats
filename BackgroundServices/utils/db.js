@@ -11,7 +11,7 @@ try{
     })
 }catch (error) {
     console.log(error);
-    setTimeout(dbconnection, 5000)
+    setTimeout(dbconnection, 8000)
 }
 }
 
