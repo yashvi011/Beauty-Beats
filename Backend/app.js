@@ -8,7 +8,7 @@ import cartRoute from "./routes/cart.route.js";
 import stripeRoute from "./routes/stripe.js";
 import bannerRoute from "./routes/banner.route.js";
 import cors from "cors";
-import {notFound, errorHandler } from "./middlewares/error.middleware.js";
+import {notFound, errorHandler } from "./middleware/error.middleware.js";
 
 const app = express();
 export default app;

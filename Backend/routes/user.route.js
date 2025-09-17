@@ -5,7 +5,7 @@ import {
   getOneUser,
   getUsersStats,
   deleteUser,
-} from "../controllers/user.controller.js";
+} from "../controller/user.controller.js";
 const router = express.Router();
 
 // UPDATE USER ROUTE

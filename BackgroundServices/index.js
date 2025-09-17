@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import dbconnection from "./utils/db.js";
+import dbconnection from "./util/db.js";
 import cron from "node-cron";
 import sendWelcomeEmail from "./EmailServices/sendWelcomEmail.js";
 

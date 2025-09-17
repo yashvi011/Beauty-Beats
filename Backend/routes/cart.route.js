@@ -6,7 +6,7 @@ import {
     deleteCart,
     createCart
   
-} from "../controllers/cart.controller.js";
+} from "../controller/cart.controller.js";
 
 // CREATE CART ROUTE
 router.post("/", createCart);

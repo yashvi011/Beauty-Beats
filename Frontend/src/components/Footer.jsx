@@ -3,7 +3,7 @@ const Footer = () => {
     <div className="bg-gray-100 px-[200px] h-[60vh] mt-[50px]">
       <div className="flex justify-between py-[5%]">
         <div>
-          <img src="/blisslogo1.png" alt="" height={200} width={200} />
+          <img src="Frontend\public\beautybeats.png" alt="" height={200} width={200} />
           <p className="mt-2">LET`S MAKE YOUR SKIN FLOURISH WITH OUR PRODUCTS.</p>
         </div>
 
