@@ -6,8 +6,8 @@ import {
   updateProduct,
   ratingProduct,
   deleteProduct,
-} from "../controllers/product.controllers.js";
-import {protect} from "../middlewares/auth.middleware.js"
+} from "../controller/product.controller.js";
+import {protect} from "../middleware/auth.middleware.js"
 const router = express.Router();
 
 //CREATE PRODUCT ROUTE

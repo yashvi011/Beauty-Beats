@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className="flex items-center justify-between h-[100px] bg-white shadow-md px-6">
       <div className="cursor-pointer m-2">
         <Link to="/">
-          <img src="/blisslogo1.png" height="150px" width="200px" alt="" />
+          <img src="/beautybeats.png" height="150px" width="200px" alt="" />
         </Link>
       </div>
       <div className="flex items-center m-2">

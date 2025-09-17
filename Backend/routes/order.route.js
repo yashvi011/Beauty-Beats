@@ -7,7 +7,7 @@ import {
   getOrderStats,
   deleteOrder,
   getUserOrder,
-} from "../controllers/order.controller.js";
+} from "../controller/order.controller.js";
 
 // CREATE ORDER ROUTE
 router.post("/", createOrder);
